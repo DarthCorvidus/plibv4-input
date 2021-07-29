@@ -8,12 +8,18 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/DarthCorvidus/plibv4-convert"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/DarthCorvidus/plibv4-assert"
 		}
+
 	],
-	"name": "plibv4/argv",
+	"name": "plibv4/input",
 	"require": {
 			"plibv4/convert": "dev-main",
-			"plibv4/validate": "dev-main"
+			"plibv4/validate": "dev-main",
+			"plibv4/assert": "dev-main"
 	},
 	"autoload": {
         "classmap": ["src/"]

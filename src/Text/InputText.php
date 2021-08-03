@@ -103,6 +103,9 @@ class InputText {
 		while(true) {
 			$this->stdio->put($this->getPrompt());
 			$input = trim($this->stdio->get());
+			if($input==="" && $this->default!=="") {
+				$input = $def;
+			}
 			if($this->validate!=NULL) {
 				try {
 					$this->validate->validate($input);
@@ -110,9 +113,6 @@ class InputText {
 					$this->stdio->put($ex->getMessage().PHP_EOL);
 					continue;
 				}
-			}
-			if($input==="" && $this->default!=="") {
-				$input = $def;
 			}
 			if($input==="" && $this->default==="" && $this->mandatory) {
 				$this->stdio->put("Input is mandatory.\n");

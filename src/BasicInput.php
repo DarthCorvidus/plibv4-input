@@ -44,8 +44,7 @@ class BasicInput {
 	static function getInput(string $question): string {
 		self::getStdioIntercept()->put($question.PHP_EOL);
 		self::getStdioIntercept()->put("> ");
-		$input = self::getStdioIntercept()->get();
-	return $input;
+	return trim(self::getStdioIntercept()->get());
 	}
 	
 	/**
@@ -60,7 +59,7 @@ class BasicInput {
 		self::getStdioIntercept()->put($question.PHP_EOL);
 		while($input==="") {
 			self::getStdioIntercept()->put("> ");
-			$input = self::getStdioIntercept()->get();
+			$input = trim(self::getStdioIntercept()->get());
 		}
 	return $input;
 	}
@@ -76,7 +75,7 @@ class BasicInput {
 	static function getInputDefaulted(string $question, string $default): string {
 		self::getStdioIntercept()->put($question." (".$default.")".PHP_EOL);
 		self::getStdioIntercept()->put("> ");
-		$input = self::getStdioIntercept()->get();
+		$input = trim(self::getStdioIntercept()->get());
 		if($input==="") {
 			return $default;
 		}

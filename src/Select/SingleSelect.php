@@ -12,47 +12,11 @@
  * item by typing in it's index.
  * An item can be preselected as default value.
  */
-class SingleSelect {
-	private $model;
-	private $stdio;
+class SingleSelect extends Select {
 	function __construct(SingleSelectModel $model) {
 		$this->model = $model;
 		$this->stdio = new StdioIntercept();
 		$this->stdio->passthru();
-	}
-	
-	/**
-	 * setStdioIntercept
-	 * 
-	 * Set StdioIntercept, to facilitate testing.
-	 * @param StdioIntercept $stdio
-	 */
-	public function setStdioIntercept(StdioIntercept $stdio) {
-		$this->stdio = $stdio;
-	}
-	
-	
-	public function getSelectable(): array {
-		return array_keys($this->getMap());
-	}
-	
-	public function getMap() {
-		$map = array();
-		$i = 0;
-		foreach($this->model->getValues() as $key => $value) {
-			if($this->model->getIndexStyle() == SingleSelectModel::SOURCE) {
-				$map[$key] = $key;
-			}
-			if($this->model->getIndexStyle() == SingleSelectModel::ZERO) {
-				$map[$i] = $key;
-				$i++;
-			}
-			if($this->model->getIndexStyle() == SingleSelectModel::NATURAL) {
-				$map[$i+1] = $key;
-				$i++;
-			}
-		}
-	return $map;
 	}
 
 	function getLine($mappedKey, $realKey, $value): string {
@@ -69,22 +33,6 @@ class SingleSelect {
 		$line .= " ";
 		$line .= $value;
 	return $line;
-	}
-	
-	function getLines(): array {
-		$result = array();
-		$values = $this->model->getValues();
-		$i = 0;
-		foreach($this->getMap() as $mappedKey => $realKey) {
-			$result[] = $this->getLine($mappedKey, $realKey, $values[$realKey]);
-		}
-	return $result;
-	}
-	
-	function printLines() {
-		foreach($this->getLines() as $value) {
-			$this->stdio->put($value."\n");
-		}
 	}
 	
 	/**

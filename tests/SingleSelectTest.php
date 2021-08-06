@@ -25,7 +25,7 @@ class SingleSelectTest extends TestCase {
 	
 	function testGetSelectableAsZero() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::ZERO);
+		$model->setIndexStyle(SelectModel::ZERO);
 
 		$select = new SingleSelect($model);
 		$this->assertEquals($select->getSelectable(), array(0, 1, 2));
@@ -33,7 +33,7 @@ class SingleSelectTest extends TestCase {
 
 	function testGetSelectableAsNatural() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::NATURAL);
+		$model->setIndexStyle(SelectModel::NATURAL);
 
 		$select = new SingleSelect($model);
 		$this->assertEquals($select->getSelectable(), array(1, 2, 3));
@@ -48,7 +48,7 @@ class SingleSelectTest extends TestCase {
 	
 	function testGetMapAsZero() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::ZERO);
+		$model->setIndexStyle(SelectModel::ZERO);
 
 		$select = new SingleSelect($model);
 		$this->assertEquals($select->getMap(), array(0=>2, 1=>1, 2=>7));
@@ -56,7 +56,7 @@ class SingleSelectTest extends TestCase {
 	
 	function testGetMapAsNatural() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::NATURAL);
+		$model->setIndexStyle(SelectModel::NATURAL);
 
 		$select = new SingleSelect($model);
 		$this->assertEquals($select->getMap(), array(1=>2, 2=>1, 3=>7));
@@ -65,7 +65,7 @@ class SingleSelectTest extends TestCase {
 	
 	function testGetLinesAsSource() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::SOURCE);
+		$model->setIndexStyle(SelectModel::SOURCE);
 
 		$select = new SingleSelect($model);
 		$lines[] = "2 Cat";
@@ -76,7 +76,7 @@ class SingleSelectTest extends TestCase {
 	
 	function testGetLinesAsZero() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::ZERO);
+		$model->setIndexStyle(SelectModel::ZERO);
 		
 		$select = new SingleSelect($model);
 		$lines[] = "0 Cat";
@@ -87,7 +87,7 @@ class SingleSelectTest extends TestCase {
 	
 	function testGetLinesAsNatural() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::NATURAL);
+		$model->setIndexStyle(SelectModel::NATURAL);
 		
 		$select = new SingleSelect($model);
 		$lines[] = "1 Cat";
@@ -118,7 +118,7 @@ class SingleSelectTest extends TestCase {
 		
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::SOURCE);
+		$model->setIndexStyle(SelectModel::SOURCE);
 
 		$select = new SingleSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -137,7 +137,7 @@ class SingleSelectTest extends TestCase {
 		
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::ZERO);
+		$model->setIndexStyle(SelectModel::ZERO);
 
 		$select = new SingleSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -156,7 +156,7 @@ class SingleSelectTest extends TestCase {
 		
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::NATURAL);
+		$model->setIndexStyle(SelectModel::NATURAL);
 
 		$select = new SingleSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -180,7 +180,7 @@ class SingleSelectTest extends TestCase {
 		$stdio->addInput("1\n");
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::NATURAL);
+		$model->setIndexStyle(SelectModel::NATURAL);
 
 		$select = new SingleSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -199,7 +199,7 @@ class SingleSelectTest extends TestCase {
 		$stdio->addInput("\n");
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SingleSelectModel::NATURAL);
+		$model->setIndexStyle(SelectModel::NATURAL);
 		$model->setDefault("1");
 
 		$select = new SingleSelect($model);

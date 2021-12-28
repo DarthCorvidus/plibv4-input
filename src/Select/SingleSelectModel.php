@@ -1,5 +1,5 @@
 <?php
-interface SingleSelectModel {
+interface SingleSelectModel extends SelectModel {
 	/**
 	 * getDefault
 	 * 

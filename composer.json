@@ -26,5 +26,14 @@
 	},
 	"autoload": {
         "classmap": ["src/"]
-    }
+    },
+	"require-dev": {
+		"phpunit/phpunit": "*",
+		"vimeo/psalm": "*"
+	},
+	"scripts": {
+		"test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests",
+		"testdox": "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests",
+		"psalm": "./vendor/bin/psalm --show-info=true --no-cache"
+	}
 }

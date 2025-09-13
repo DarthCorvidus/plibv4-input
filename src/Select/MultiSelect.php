@@ -5,6 +5,7 @@
  * @license LGPL
  */
 
+namespace plibv4\input;
 /**
  * MultiSelect
  * 

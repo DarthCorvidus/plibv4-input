@@ -5,6 +5,7 @@
  * @license LGPL
  */
 declare(strict_types=1);
+namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 class MultiSelectTest extends TestCase {
 	function getGeneric(): MultiSelectGeneric {
@@ -126,7 +127,7 @@ class MultiSelectTest extends TestCase {
 
 		$select = new MultiSelect($model);
 		
-		$reflection = new ReflectionClass($select);
+		$reflection = new \ReflectionClass($select);
 		$property = $reflection->getProperty('selected');
 		$property->setAccessible(true);
 		$property->setValue($select, $model->getDefault());

@@ -1,4 +1,5 @@
 <?php
+namespace plibv4\input;
 interface MultiSelectModel extends SelectModel {
 	function getDefault(): array;
 	/**

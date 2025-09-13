@@ -4,6 +4,10 @@
  * @author Claus-Christoph Küthe <floss@vm01.telton.de>
  * @license LGPL
  */
+namespace plibv4\input;
+use Convert;
+use Validate;
+use ValidateException;
 
 /**
  * InputText
@@ -109,7 +113,7 @@ class InputText {
 			if($this->validate!=NULL) {
 				try {
 					$this->validate->validate($input);
-				} catch (Exception $ex) {
+				} catch (ValidateException $ex) {
 					$this->stdio->put($ex->getMessage().PHP_EOL);
 					continue;
 				}

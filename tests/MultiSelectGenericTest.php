@@ -5,6 +5,7 @@
  * @license LGPL
  */
 declare(strict_types=1);
+namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
 class MultiSelectGenericTest extends TestCase {
@@ -90,7 +91,7 @@ class MultiSelectGenericTest extends TestCase {
 	
 	function testSetStyleInvalid() {
 		$generic = new MultiSelectGeneric("Available operating systems?");
-		$this->expectException(InvalidArgumentException::class);
+		$this->expectException(\InvalidArgumentException::class);
 		$generic->setIndexStyle(17);
 	}
 

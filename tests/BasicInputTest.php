@@ -1,17 +1,12 @@
 <?php
-declare(strict_types=1);
-use PHPUnit\Framework\TestCase;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of AssertTest
- *
- * @author hm
+ * @copyright (c) 2021, Claus-Christoph Küthe
+ * @author Claus-Christoph Küthe <floss@vm01.telton.de>
+ * @license LGPL
  */
+declare(strict_types=1);
+namespace plibv4\input;
+use PHPUnit\Framework\TestCase;
 class BasicInputTest extends TestCase {
 	function testGetInput() {
 		$stdio = new StdioIntercept();

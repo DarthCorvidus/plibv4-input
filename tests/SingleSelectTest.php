@@ -5,6 +5,7 @@
  * @license LGPL
  */
 declare(strict_types=1);
+namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
 class SingleSelectTest extends TestCase {

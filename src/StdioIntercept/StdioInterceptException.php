@@ -4,6 +4,7 @@
  * @author Claus-Christoph Küthe <floss@vm01.telton.de>
  * @license LGPL
  */
-class StdioInterceptException extends RuntimeException {
+namespace plibv4\input;
+class StdioInterceptException extends \RuntimeException {
 	
 }

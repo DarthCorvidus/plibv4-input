@@ -4,7 +4,7 @@
  * @author Claus-Christoph Küthe <floss@vm01.telton.de>
  * @license LGPL
  */
-
+namespace plibv4\input;
 /**
  * SingleSelectGeneric
  * 
@@ -55,7 +55,7 @@ class MultiSelectGeneric implements MultiSelectModel {
 	 * @param int $style
 	 */
 	public function setIndexStyle(int $style) {
-		Assert::isClassConstant(SelectModel::class, $style);
+		\Assert::isClassConstant(SelectModel::class, $style);
 		$this->style = $style;
 	}
 	

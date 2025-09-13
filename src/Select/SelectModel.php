@@ -1,4 +1,5 @@
 <?php
+namespace plibv4\input;
 interface SelectModel {
 	const SOURCE = 1;
 	const ZERO = 2;

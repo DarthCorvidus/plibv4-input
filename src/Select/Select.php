@@ -1,4 +1,5 @@
 <?php
+namespace plibv4\input;
 abstract class Select {
 	protected $model;
 	protected $stdio;

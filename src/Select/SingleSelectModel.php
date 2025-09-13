@@ -1,4 +1,5 @@
 <?php
+namespace plibv4\input;
 interface SingleSelectModel extends SelectModel {
 	/**
 	 * getDefault

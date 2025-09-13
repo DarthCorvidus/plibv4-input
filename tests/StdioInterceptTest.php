@@ -1,17 +1,14 @@
 <?php
-declare(strict_types=1);
-use PHPUnit\Framework\TestCase;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @copyright (c) 2021, Claus-Christoph Küthe
+ * @author Claus-Christoph Küthe <floss@vm01.telton.de>
+ * @license LGPL
  */
 
-/**
- * Description of AssertTest
- *
- * @author hm
- */
+declare(strict_types=1);
+namespace plibv4\input;
+use PHPUnit\Framework\TestCase;
+
 class StdioInterceptTest extends TestCase {
 	function testStdioInterceptValidOutput() {
 		$stdio = new StdioIntercept();

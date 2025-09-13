@@ -5,6 +5,7 @@
  * @license LGPL
  */
 declare(strict_types=1);
+namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
 class SingleSelectGenericTest extends TestCase {
@@ -84,7 +85,7 @@ class SingleSelectGenericTest extends TestCase {
 	
 	function testSetStyleInvalid() {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
-		$this->expectException(InvalidArgumentException::class);
+		$this->expectException(\InvalidArgumentException::class);
 		$generic->setIndexStyle(17);
 	}
 

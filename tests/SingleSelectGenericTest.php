@@ -71,22 +71,15 @@ class SingleSelectGenericTest extends TestCase {
 	
 	function testSetStyle() {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
-		$this->assertEquals(SelectModel::SOURCE, $generic->getIndexStyle());
+		$this->assertEquals(IndexStyle::SOURCE, $generic->getIndexStyle());
 		
-		$generic->setIndexStyle(SelectModel::SOURCE);
-		$this->assertEquals(SelectModel::SOURCE, $generic->getIndexStyle());
+		$generic->setIndexStyle(IndexStyle::SOURCE);
+		$this->assertEquals(IndexStyle::SOURCE, $generic->getIndexStyle());
 		
-		$generic->setIndexStyle(SelectModel::ZERO);
-		$this->assertEquals(SelectModel::ZERO, $generic->getIndexStyle());
+		$generic->setIndexStyle(IndexStyle::ZERO);
+		$this->assertEquals(IndexStyle::ZERO, $generic->getIndexStyle());
 		
-		$generic->setIndexStyle(SelectModel::NATURAL);
-		$this->assertEquals(SelectModel::NATURAL, $generic->getIndexStyle());
+		$generic->setIndexStyle(IndexStyle::NATURAL);
+		$this->assertEquals(IndexStyle::NATURAL, $generic->getIndexStyle());
 	}
-	
-	function testSetStyleInvalid() {
-		$generic = new SingleSelectGeneric("Your favorite pet?");
-		$this->expectException(\InvalidArgumentException::class);
-		$generic->setIndexStyle(17);
-	}
-
 }

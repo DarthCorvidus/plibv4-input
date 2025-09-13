@@ -15,7 +15,7 @@ class SingleSelectGeneric implements SingleSelectModel {
 	private $default = "";
 	private $mandatory = TRUE;
 	private $values = array();
-	private $style = SelectModel::SOURCE;
+	private IndexStyle $style = IndexStyle::SOURCE;
 	/**
 	 * 
 	 * @param string $question Question that will be displayed above the item list
@@ -41,16 +41,13 @@ class SingleSelectGeneric implements SingleSelectModel {
 	/**
 	 * setIndexStyle
 	 * 
-	 * Sets the index style which must be one of SelectModel::SOURCE,
-	 * SelectModel::ZERO, SelectModel::NATURAL.
-	 * @param int $style
+	 * @param IndexStyle $style
 	 */
-	public function setIndexStyle(int $style) {
-		\Assert::isClassConstant(SelectModel::class, $style);
+	public function setIndexStyle(IndexStyle $style) {
 		$this->style = $style;
 	}
 	
-	public function getIndexStyle(): int {
+	public function getIndexStyle(): IndexStyle {
 		return $this->style;
 	}
 

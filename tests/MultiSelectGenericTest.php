@@ -77,22 +77,15 @@ class MultiSelectGenericTest extends TestCase {
 	
 	function testSetStyle() {
 		$generic = new MultiSelectGeneric("Available operating systems?");
-		$this->assertEquals(SelectModel::SOURCE, $generic->getIndexStyle());
+		$this->assertEquals(IndexStyle::SOURCE, $generic->getIndexStyle());
 		
-		$generic->setIndexStyle(SelectModel::SOURCE);
-		$this->assertEquals(SelectModel::SOURCE, $generic->getIndexStyle());
+		$generic->setIndexStyle(IndexStyle::SOURCE);
+		$this->assertEquals(IndexStyle::SOURCE, $generic->getIndexStyle());
 		
-		$generic->setIndexStyle(SelectModel::ZERO);
-		$this->assertEquals(SelectModel::ZERO, $generic->getIndexStyle());
+		$generic->setIndexStyle(IndexStyle::ZERO);
+		$this->assertEquals(IndexStyle::ZERO, $generic->getIndexStyle());
 		
-		$generic->setIndexStyle(SelectModel::NATURAL);
-		$this->assertEquals(SelectModel::NATURAL, $generic->getIndexStyle());
+		$generic->setIndexStyle(IndexStyle::NATURAL);
+		$this->assertEquals(IndexStyle::NATURAL, $generic->getIndexStyle());
 	}
-	
-	function testSetStyleInvalid() {
-		$generic = new MultiSelectGeneric("Available operating systems?");
-		$this->expectException(\InvalidArgumentException::class);
-		$generic->setIndexStyle(17);
-	}
-
 }

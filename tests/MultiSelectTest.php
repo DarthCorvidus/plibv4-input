@@ -34,7 +34,7 @@ class MultiSelectTest extends TestCase {
 	
 	function testGetSelectableAsZero() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::ZERO);
+		$model->setIndexStyle(IndexStyle::ZERO);
 
 		$select = new MultiSelect($model);
 		$this->assertEquals($select->getSelectable(), array(0, 1, 2, 3, 4, 5, 6, 7));
@@ -42,7 +42,7 @@ class MultiSelectTest extends TestCase {
 
 	function testGetSelectableAsNatural() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 
 		$select = new MultiSelect($model);
 		$this->assertEquals($select->getSelectable(), array(1, 2, 3, 4, 5, 6, 7, 8));
@@ -57,7 +57,7 @@ class MultiSelectTest extends TestCase {
 	
 	function testGetMapAsZero() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::ZERO);
+		$model->setIndexStyle(IndexStyle::ZERO);
 
 		$select = new MultiSelect($model);
 		$this->assertEquals($select->getMap(), array(0=>8, 1=>2, 2=>7, 3=>6, 4=>5, 5=>3, 6=>4, 7=>1));
@@ -65,7 +65,7 @@ class MultiSelectTest extends TestCase {
 	
 	function testGetMapAsNatural() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 
 		$select = new MultiSelect($model);
 		$this->assertEquals($select->getMap(), array(1=>8, 2=>2, 3=>7, 4=>6, 5=>5, 6=>3, 7=>4, 8=>1));
@@ -74,7 +74,7 @@ class MultiSelectTest extends TestCase {
 	
 	function testGetLinesAsSource() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::SOURCE);
+		$model->setIndexStyle(IndexStyle::SOURCE);
 
 		$select = new MultiSelect($model);
 
@@ -91,7 +91,7 @@ class MultiSelectTest extends TestCase {
 	
 	function testGetLinesAsZero() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::ZERO);
+		$model->setIndexStyle(IndexStyle::ZERO);
 		
 		$select = new MultiSelect($model);
 		$lines[] = "0 Android";
@@ -107,7 +107,7 @@ class MultiSelectTest extends TestCase {
 	
 	function testGetLinesAsNatural() {
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 		
 		$select = new MultiSelect($model);
 		$lines[] = "1 Android";
@@ -181,7 +181,7 @@ class MultiSelectTest extends TestCase {
 		$stdio->addInput("x\n");
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::SOURCE);
+		$model->setIndexStyle(IndexStyle::SOURCE);
 
 		$select = new MultiSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -226,7 +226,7 @@ class MultiSelectTest extends TestCase {
 		$stdio->addInput("x\n");
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::ZERO);
+		$model->setIndexStyle(IndexStyle::ZERO);
 
 		$select = new MultiSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -271,7 +271,7 @@ class MultiSelectTest extends TestCase {
 		$stdio->addInput("x\n");
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 
 		$select = new MultiSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -327,7 +327,7 @@ class MultiSelectTest extends TestCase {
 		$stdio->addInput("x\n");
 
 		$model = $this->getGeneric();
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 
 		$select = new MultiSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -351,7 +351,7 @@ class MultiSelectTest extends TestCase {
 
 		$model = $this->getGeneric();
 		$model->setDefault(array(1, 2));
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 
 		$select = new MultiSelect($model);
 		$select->setStdioIntercept($stdio);
@@ -387,7 +387,7 @@ class MultiSelectTest extends TestCase {
 
 		$model = $this->getGeneric();
 		$model->setDefault(array(1, 2));
-		$model->setIndexStyle(SelectModel::NATURAL);
+		$model->setIndexStyle(IndexStyle::NATURAL);
 
 		$select = new MultiSelect($model);
 		$select->setStdioIntercept($stdio);

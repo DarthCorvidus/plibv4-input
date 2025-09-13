@@ -1,21 +1,15 @@
 <?php
 namespace plibv4\input;
 interface SelectModel {
-	const SOURCE = 1;
-	const ZERO = 2;
-	const NATURAL = 3;
 	/**
 	 * getIndexStyle
 	 * 
-	 * By default, Select will directly display the keys & values,
-	 * which is SelectModel::SOURCE. This may yield ugly results if using
-	 * primary keys from a database, as the sort order of values & keys will
-	 * most likely not fit together.
-	 * SelectModel::ZERO replaces the source indices with 0-based indices.
-	 * SelectModel::NATURAL starts with 1 instead of 0 to accomodate
-	 * organics.
+	 * Used to determine whether key values should be used as is or replaced by
+	 * zero or 1 indexed numbers.
+	 * 
+	 * @return IndexStyle
 	 */
-	function getIndexStyle(): int;
+	function getIndexStyle(): IndexStyle;
 	/**
 	 * isMandatory
 	 * 

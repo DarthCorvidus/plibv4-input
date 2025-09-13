@@ -22,14 +22,14 @@ abstract class Select {
 		$map = array();
 		$i = 0;
 		foreach($this->model->getValues() as $key => $value) {
-			if($this->model->getIndexStyle() == SelectModel::SOURCE) {
+			if($this->model->getIndexStyle() == IndexStyle::SOURCE) {
 				$map[$key] = $key;
 			}
-			if($this->model->getIndexStyle() == SelectModel::ZERO) {
+			if($this->model->getIndexStyle() == IndexStyle::ZERO) {
 				$map[$i] = $key;
 				$i++;
 			}
-			if($this->model->getIndexStyle() == SelectModel::NATURAL) {
+			if($this->model->getIndexStyle() == IndexStyle::NATURAL) {
 				$map[$i+1] = $key;
 				$i++;
 			}

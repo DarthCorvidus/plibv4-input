@@ -15,7 +15,7 @@ class MultiSelectGeneric implements MultiSelectModel {
 	private $default = array();
 	private $mandatory = TRUE;
 	private $values = array();
-	private $style = SelectModel::SOURCE;
+	private IndexStyle $style = IndexStyle::SOURCE;
 	private $continue = "";
 	/**
 	 * 
@@ -52,14 +52,13 @@ class MultiSelectGeneric implements MultiSelectModel {
 	 * 
 	 * Sets the index style which must be one of SingleSelectModel::SOURCE,
 	 * SingleSelectModel::ZERO, SingleSelectModel::NATURAL.
-	 * @param int $style
+	 * @param 
 	 */
-	public function setIndexStyle(int $style) {
-		\Assert::isClassConstant(SelectModel::class, $style);
+	public function setIndexStyle(IndexStyle $style) {
 		$this->style = $style;
 	}
 	
-	public function getIndexStyle(): int {
+	public function getIndexStyle(): IndexStyle {
 		return $this->style;
 	}
 

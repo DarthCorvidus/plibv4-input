@@ -38,8 +38,8 @@ class BasicInput {
 	 * getInput
 	 * 
 	 * Get input from prompt, with question.
-	 * @param type $question
-	 * @return type
+	 * @param string $question
+	 * @return string
 	 */
 	static function getInput(string $question): string {
 		self::getStdioIntercept()->put($question.PHP_EOL);
@@ -51,8 +51,8 @@ class BasicInput {
 	 * getInputMandatory
 	 * 
 	 * Get input from prompt, but doesn't allow for empty input.
-	 * @param type $question
-	 * @return type
+	 * @param string $question
+	 * @return string
 	 */
 	static function getInputMandatory(string $question): string {
 		$input = "";
@@ -68,9 +68,9 @@ class BasicInput {
 	 * getInputDefaulted
 	 * 
 	 * Get input from prompt and returns default on empty input
-	 * @param type $question
-	 * @param type $default
-	 * @return type
+	 * @param string $question
+	 * @param string $default
+	 * @return string
 	 */
 	static function getInputDefaulted(string $question, string $default): string {
 		self::getStdioIntercept()->put($question." (".$default.")".PHP_EOL);

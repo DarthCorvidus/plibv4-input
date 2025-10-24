@@ -34,7 +34,7 @@ interface SelectModel {
 	 * Note - if load is very expensive, you may implement mechanisms to only
 	 * load the items once.
 	 */
-	function load();
+	function load(): void;
 	/**
 	 * getValues
 	 * 

@@ -13,7 +13,7 @@ namespace plibv4\input;
  * BasicInput is an easier to use alternative.
  */
 class BasicInput {
-	static $stdio;
+	static ?StdioIntercept $stdio = null;
 	private static function getStdioIntercept(): StdioIntercept {
 		if(self::$stdio === NULL) {
 			self::$stdio = new StdioIntercept();
@@ -24,13 +24,14 @@ class BasicInput {
 	
 	/**
 	 * setStdioIntercept
-	 * 
+	 *
 	 * Allows to set StdioIntercept globally. Usually, I'd consider this
 	 * approach very bad design, but I think it's acceptable here, since this
 	 * is actually a feature for testing and not productive use.
+	 *
 	 * @param StdioIntercept $stdio
 	 */
-	static function setStdioIntercept(StdioIntercept $stdio) {
+	static function setStdioIntercept(StdioIntercept $stdio): void {
 		self::$stdio = $stdio;
 	}
 	

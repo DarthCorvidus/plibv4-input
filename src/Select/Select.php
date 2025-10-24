@@ -1,15 +1,16 @@
 <?php
 namespace plibv4\input;
 abstract class Select {
-	protected $model;
-	protected $stdio;
+	protected SelectModel $model;
+	protected StdioIntercept $stdio;
 	/**
 	 * setStdioIntercept
-	 * 
+	 *
 	 * Set StdioIntercept, to facilitate testing.
+	 *
 	 * @param StdioIntercept $stdio
 	 */
-	public function setStdioIntercept(StdioIntercept $stdio) {
+	public function setStdioIntercept(StdioIntercept $stdio): void {
 		$this->stdio = $stdio;
 	}
 	
@@ -18,10 +19,10 @@ abstract class Select {
 		return array_keys($this->getMap());
 	}
 	
-	public function getMap() {
+	public function getMap(): array {
 		$map = array();
 		$i = 0;
-		foreach($this->model->getValues() as $key => $value) {
+		foreach($this->model->getValues() as $key => $_) {
 			if($this->model->getIndexStyle() == IndexStyle::SOURCE) {
 				$map[$key] = $key;
 			}
@@ -37,19 +38,18 @@ abstract class Select {
 	return $map;
 	}
 
-	abstract function getLine($mappedKey, $realKey, $value);
+	abstract function getLine(string $mappedKey, string $realKey, string $value): string;
 	
 	function getLines(): array {
 		$result = array();
 		$values = $this->model->getValues();
-		$i = 0;
 		foreach($this->getMap() as $mappedKey => $realKey) {
 			$result[] = $this->getLine($mappedKey, $realKey, $values[$realKey]);
 		}
 	return $result;
 	}
 	
-	function printLines() {
+	function printLines(): void {
 		foreach($this->getLines() as $value) {
 			$this->stdio->put($value."\n");
 		}

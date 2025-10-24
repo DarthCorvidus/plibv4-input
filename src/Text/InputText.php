@@ -16,14 +16,16 @@ use ValidateException;
  * validate and convert input.
  */
 class InputText {
-	private $default = "";
-	private $prompt = "%s\n> ";
-	private $promptDefaulted = "%s (%s)\n> ";
-	private $stdio;
-	private $mandatory;
-	private $validate;
-	private $convertInput;
-	private $convertDefault;
+	private string $question;
+	private string $default = "";
+	private string $prompt = "%s\n> ";
+	private string $promptDefaulted = "%s (%s)\n> ";
+	private StdioIntercept $stdio;
+	private bool $mandatory = false;
+	private ?Validate $validate = null;
+	private ?Convert $convertInput = null;
+	private ?Convert $convertDefault = null;
+	private mixed $inputStream;
 	/**
 	 * 
 	 * @param string $question Question to be displayed over prompt.
@@ -36,54 +38,56 @@ class InputText {
 	
 	/**
 	 * Set StdioIntercept
-	 * 
+	 *
 	 * StdioIntercept can be used to do unit tests by predefining input and expected
 	 * output. If output doesn't match, stdio will throw an exception.
 	 * If setStdioIntercept is not called, a default instance of StdioIntercept will be used
 	 * that passes through input from STDIN and output to STDOUT.
+	 *
 	 * @param StdioIntercept $stdio
 	 */
-	function setStdioIntercept(StdioIntercept $stdio) {
+	function setStdioIntercept(StdioIntercept $stdio): void {
 		$this->stdio = $stdio;
 	}
 	
 	/**
 	 * Set Convert for input
-	 * 
+	 *
 	 * Set convert class which is called on user input. This allows to handle
 	 * user input as early as possible, while getting proper values for further
 	 * processing (example: converting 03.10.1990 to 1990-10-03).
 	 * Note that convert is called after validate.
+	 *
 	 * @param Convert $convert
 	 */
-	function setInputConvert(Convert $convert) {
+	function setInputConvert(Convert $convert): void {
 		$this->convertInput = $convert;
 	}
 	
 	/**
 	 * Set Validate for input
-	 * 
+	 *
 	 * setValidate expects an implementation of Validate which will then be
-	 * called on user input. If Validate fails, the user will be displayed 
-	 * 
+	 * called on user input. If Validate fails, the user will be displayed
+	 *
 	 * @param Validate $validate
 	 */
-	function setValidate(Validate $validate) {
+	function setValidate(Validate $validate): void {
 		$this->validate = $validate;
 	}
-	function setInputStream($stream) {
+	function setInputStream(mixed $stream): void {
 		$this->inputStream = $stream;
 	}
 	
-	function setDefault(string $default) {
+	function setDefault(string $default): void {
 		$this->default = $default;
 	}
 	
-	function setDefaultConvert(Convert $convert) {
+	function setDefaultConvert(Convert $convert): void {
 		$this->convertDefault = $convert;
 	}
 	
-	function mandatory(bool $mandatory) {
+	function mandatory(bool $mandatory): void {
 		$this->mandatory = $mandatory;
 	}
 	

@@ -14,14 +14,24 @@ namespace plibv4\input;
  * items can be preselected as default value.
  */
 class MultiSelect extends Select {
-	private $selected = array();
+	private array $selected = array();
 	function __construct(MultiSelectModel $model) {
 		$this->model = $model;
 		$this->stdio = new StdioIntercept();
 		$this->stdio->passthru();
 	}
-
-	function getLine($mappedKey, $realKey, $value): string {
+	/**
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @param SelectModel $model
+	 * @return MultiSelectModel
+	 */
+	private static function toMultiSelectModel(SelectModel $model): MultiSelectModel {
+		/** @psalm-suppress LessSpecificReturnStatement */
+		return $model;
+	}
+	
+	#[\Override]
+	function getLine(string $mappedKey, string $realKey, string $value): string {
 		$line = "";
 		if($this->selected==array()) {
 			$line .= $mappedKey;
@@ -37,7 +47,7 @@ class MultiSelect extends Select {
 	return $line;
 	}
 	
-	private function mayContinue() {
+	private function mayContinue(): bool {
 		if(!empty($this->selected)) {
 			return true;
 		}
@@ -49,24 +59,24 @@ class MultiSelect extends Select {
 	
 	/**
 	 * getSelected
-	 * 
+	 *
 	 * Returns the index of the selected value, or an empty string if the user
 	 * did not select a value and no default value was defined.
 	 * Note that getSelect will always return the 'real' index which may differ
 	 * from the index numbers displayed.
-	 * @return string
+	 * @return array get selected values
 	 */
 	function getSelected(): array {
-		$this->model->load();
-		$this->selected = $this->model->getDefault();
+		$model = self::toMultiSelectModel($this->model);
+		$model->load();
+		$this->selected = $model->getDefault();
 		$map = $this->getMap();
-		$input = "";
 		while(true) {
-			$this->stdio->put($this->model->getQuestion()."\n");
+			$this->stdio->put($model->getQuestion()."\n");
 			$this->printLines();
 			$this->stdio->put("> ");
 			$input = trim($this->stdio->get());
-			if($input===$this->model->getContinue() && $this->mayContinue()) {
+			if($input===$model->getContinue() && $this->mayContinue()) {
 				return $this->selected;
 			}
 			

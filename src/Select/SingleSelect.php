@@ -18,16 +18,28 @@ class SingleSelect extends Select {
 		$this->stdio = new StdioIntercept();
 		$this->stdio->passthru();
 	}
+	
+	/**
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @param SelectModel $model
+	 * @return SingleSelectModel
+	 */
+	private static function toSingleSelectModel(SelectModel $model): SingleSelectModel {
+		/** @psalm-suppress LessSpecificReturnStatement */
+		return $model;
+	}
 
-	function getLine($mappedKey, $realKey, $value): string {
+	#[\Override]
+	function getLine(string $mappedKey, string $realKey, string $value): string {
 		$line = "";
-		if($this->model->getDefault()=="") {
+		$model = self::toSingleSelectModel($this->model);
+		if($model->getDefault()=="") {
 			$line .= $mappedKey;
 		}
-		if($this->model->getDefault()!=="" && $this->model->getDefault()!=$realKey) {
+		if($model->getDefault()!=="" && $model->getDefault()!=$realKey) {
 			$line .= " ".$mappedKey." ";
 		}
-		if($this->model->getDefault()!=="" && $this->model->getDefault()==$realKey) {
+		if($model->getDefault()!=="" && $model->getDefault()==$realKey) {
 			$line .= "[".$mappedKey."]";
 		}
 		$line .= " ";
@@ -54,7 +66,7 @@ class SingleSelect extends Select {
 			$this->stdio->put("> ");
 			$input = trim($this->stdio->get());
 			if($input==="") {
-				$input = $this->model->getDefault();
+				$input = self::toSingleSelectModel($this->model)->getDefault();
 			}
 		}
 	return $map[$input];

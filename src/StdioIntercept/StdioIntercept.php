@@ -5,6 +5,7 @@
  * @license LGPL
  */
 namespace plibv4\input;
+use RuntimeException;
 /**
  * StdioIntercept
  * 
@@ -15,20 +16,23 @@ namespace plibv4\input;
  * given the state of StdioIntercept.
  */
 class StdioIntercept {
-	private $output = array();
-	private $input = array();
-	private $posDefined = 0;
-	private $posCheck = 0;
-	private $passthru = false;
-	public function passthru() {
+	private array $output = array();
+	private array $input = array();
+	private int $posDefined = 0;
+	private int $posCheck = 0;
+	private bool $passthru = false;
+	public function passthru(): void {
 		$this->passthru = true;
 	}
 	
-	function expectOutput(string $output) {
+	function expectOutput(string $output): void {
 		$this->output[$this->posDefined] = $output;
 		$this->posDefined++;
 	}
 	
+	/**
+	 * @return void
+	 */
 	function put(string $output) {
 		if($this->passthru === true) {
 			echo $output;
@@ -43,14 +47,18 @@ class StdioIntercept {
 	$this->posCheck++;
 	}
 	
-	function addInput(string $input) {
+	function addInput(string $input): void {
 		$this->input[$this->posDefined] = $input;
 		$this->posDefined++;
 	}
 	
-	function get() {
+	function get(): string {
 		if($this->passthru === true) {
-			return fgets(STDIN);
+			$read = fgets(STDIN);
+			if($read === false) {
+				throw new RuntimeException("unable to read from STDIN");
+			}
+		return $read;
 		}
 		if(!isset($this->input[$this->posCheck])) {
 			throw new StdioInterceptException("No input defined for step ".$this->posCheck);

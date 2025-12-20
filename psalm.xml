@@ -27,9 +27,6 @@
 		<directory name="src" />
         <ignoreFiles>
             <directory name="vendor" />
-			<!-- These are in development -->
-			<file name="src/Text/InputTextModel.php" />
-			<file name="src/Text/InputTextGeneric.php" />
         </ignoreFiles>
     </projectFiles>
 </psalm>

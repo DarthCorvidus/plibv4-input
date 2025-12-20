@@ -15,14 +15,19 @@
 			"type": "vcs",
 			"url": "https://github.com/DarthCorvidus/plibv4-assert",
 			"no-api": true
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/DarthCorvidus/plibv4-uservalue",
+			"no-api": true
 		}
-
 	],
 	"name": "plibv4/input",
 	"require": {
 			"plibv4/convert": "dev-main",
 			"plibv4/validate": "dev-main",
-			"plibv4/assert": "dev-main"
+			"plibv4/assert": "dev-main",
+			"plibv4/uservalue": "dev-main"
 	},
 	"autoload": {
         "classmap": ["src/"]

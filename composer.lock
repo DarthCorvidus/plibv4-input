@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e0c949a35086cda1c8772a341ae12f7",
+    "content-hash": "33313f884c2c4712fdebd5c35901d0ea",
     "packages": [
         {
             "name": "amphp/amp",
@@ -2689,6 +2689,48 @@
             "time": "2024-12-06T17:44:07+00:00"
         },
         {
+            "name": "plibv4/uservalue",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarthCorvidus/plibv4-uservalue",
+                "reference": "ac3135de77a352390b4951c6329c7f08a0c43f7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-uservalue/zipball/ac3135de77a352390b4951c6329c7f08a0c43f7a",
+                "reference": "ac3135de77a352390b4951c6329c7f08a0c43f7a",
+                "shasum": ""
+            },
+            "require": {
+                "plibv4/convert": "dev-main",
+                "plibv4/validate": "dev-main"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+                ],
+                "testdox": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
+                ],
+                "psalm": [
+                    "./vendor/bin/psalm --show-info=true --no-cache"
+                ]
+            },
+            "time": "2025-12-19T22:30:10+00:00"
+        },
+        {
             "name": "plibv4/validate",
             "version": "dev-main",
             "source": {
@@ -5158,7 +5200,8 @@
     "stability-flags": {
         "plibv4/convert": 20,
         "plibv4/validate": 20,
-        "plibv4/assert": 20
+        "plibv4/assert": 20,
+        "plibv4/uservalue": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

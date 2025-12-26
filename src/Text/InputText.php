@@ -5,9 +5,9 @@
  * @license LGPL
  */
 namespace plibv4\input;
-use Convert;
-use Validate;
-use ValidateException;
+use plibv4\convert\Convert;
+use plibv4\validate\Validate;
+use plibv4\validate\ValidateException;
 
 /**
  * InputText

@@ -7,6 +7,182 @@
     "content-hash": "33313f884c2c4712fdebd5c35901d0ea",
     "packages": [
         {
+            "name": "plibv4/assert",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarthCorvidus/plibv4-assert",
+                "reference": "8b0c783179d8f4e6538a5e98aa597c35d2b2378c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-assert/zipball/8b0c783179d8f4e6538a5e98aa597c35d2b2378c",
+                "reference": "8b0c783179d8f4e6538a5e98aa597c35d2b2378c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+                ],
+                "testdox": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
+                ],
+                "psalm": [
+                    "./vendor/bin/psalm --show-info=true --no-cache"
+                ]
+            },
+            "time": "2025-12-24T19:54:55+00:00"
+        },
+        {
+            "name": "plibv4/convert",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarthCorvidus/plibv4-convert",
+                "reference": "1fcde18960cc401acfbc1ffd0dc94932e9c8c593"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-convert/zipball/1fcde18960cc401acfbc1ffd0dc94932e9c8c593",
+                "reference": "1fcde18960cc401acfbc1ffd0dc94932e9c8c593",
+                "shasum": ""
+            },
+            "require": {
+                "plibv4/assert": "dev-main"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+                ],
+                "testdox": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
+                ],
+                "psalm": [
+                    "./vendor/bin/psalm --show-info=true --no-cache"
+                ]
+            },
+            "time": "2025-12-22T16:34:54+00:00"
+        },
+        {
+            "name": "plibv4/uservalue",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarthCorvidus/plibv4-uservalue",
+                "reference": "b3cb5e907f0986867ac4c058f9a0e2f65a97473f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-uservalue/zipball/b3cb5e907f0986867ac4c058f9a0e2f65a97473f",
+                "reference": "b3cb5e907f0986867ac4c058f9a0e2f65a97473f",
+                "shasum": ""
+            },
+            "require": {
+                "plibv4/convert": "dev-main",
+                "plibv4/validate": "dev-main"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+                ],
+                "testdox": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
+                ],
+                "coverage": [
+                    "phpdbg -qrr ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests --coverage-text"
+                ],
+                "coverage-html": [
+                    "phpdbg -qrr ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests --coverage-html coverage"
+                ],
+                "psalm": [
+                    "./vendor/bin/psalm --show-info=true --no-cache"
+                ]
+            },
+            "time": "2025-12-23T20:56:34+00:00"
+        },
+        {
+            "name": "plibv4/validate",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarthCorvidus/plibv4-validate",
+                "reference": "216112dfba8a597e07562690483ceb9a39b19e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-validate/zipball/216112dfba8a597e07562690483ceb9a39b19e6c",
+                "reference": "216112dfba8a597e07562690483ceb9a39b19e6c",
+                "shasum": ""
+            },
+            "require": {
+                "plibv4/assert": "dev-main"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+                ],
+                "testdox": [
+                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
+                ],
+                "coverage": [
+                    "phpdbg -qrr ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests --coverage-text"
+                ],
+                "coverage-html": [
+                    "phpdbg -qrr ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests --coverage-html coverage"
+                ],
+                "psalm": [
+                    "./vendor/bin/psalm --show-info=true --no-cache"
+                ]
+            },
+            "time": "2025-12-23T19:35:52+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
             "name": "amphp/amp",
             "version": "3.x-dev",
             "source": {
@@ -2610,168 +2786,6 @@
             "time": "2025-09-13T07:48:20+00:00"
         },
         {
-            "name": "plibv4/assert",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/DarthCorvidus/plibv4-assert",
-                "reference": "13c153a5cb5cbc5594c2232afaf3a881a3aa9704"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-assert/zipball/13c153a5cb5cbc5594c2232afaf3a881a3aa9704",
-                "reference": "13c153a5cb5cbc5594c2232afaf3a881a3aa9704",
-                "shasum": ""
-            },
-            "require": {
-                "phpunit/phpunit": "^9.6.x-dev",
-                "vimeo/psalm": "^6.x-dev"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
-                ],
-                "testdox": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
-                ],
-                "psalm": [
-                    "./vendor/bin/psalm --show-info=true --no-cache"
-                ]
-            },
-            "time": "2024-12-07T15:14:01+00:00"
-        },
-        {
-            "name": "plibv4/convert",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/DarthCorvidus/plibv4-convert",
-                "reference": "be3c5dd37c2a82023f7db8f1c10a6a268d88154d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-convert/zipball/be3c5dd37c2a82023f7db8f1c10a6a268d88154d",
-                "reference": "be3c5dd37c2a82023f7db8f1c10a6a268d88154d",
-                "shasum": ""
-            },
-            "require": {
-                "plibv4/assert": "dev-main"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "9.6.x-dev",
-                "vimeo/psalm": "6.x-dev"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
-                ],
-                "testdox": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
-                ],
-                "psalm": [
-                    "./vendor/bin/psalm --show-info=true --no-cache"
-                ]
-            },
-            "time": "2024-12-06T17:44:07+00:00"
-        },
-        {
-            "name": "plibv4/uservalue",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/DarthCorvidus/plibv4-uservalue",
-                "reference": "ac3135de77a352390b4951c6329c7f08a0c43f7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-uservalue/zipball/ac3135de77a352390b4951c6329c7f08a0c43f7a",
-                "reference": "ac3135de77a352390b4951c6329c7f08a0c43f7a",
-                "shasum": ""
-            },
-            "require": {
-                "plibv4/convert": "dev-main",
-                "plibv4/validate": "dev-main"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9",
-                "vimeo/psalm": "^6"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
-                ],
-                "testdox": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
-                ],
-                "psalm": [
-                    "./vendor/bin/psalm --show-info=true --no-cache"
-                ]
-            },
-            "time": "2025-12-19T22:30:10+00:00"
-        },
-        {
-            "name": "plibv4/validate",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/DarthCorvidus/plibv4-validate",
-                "reference": "beae2bd0ea8ca90cbaa381dd0d66e90c74c4a97d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DarthCorvidus/plibv4-validate/zipball/beae2bd0ea8ca90cbaa381dd0d66e90c74c4a97d",
-                "reference": "beae2bd0ea8ca90cbaa381dd0d66e90c74c4a97d",
-                "shasum": ""
-            },
-            "require": {
-                "plibv4/assert": "dev-main"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9",
-                "vimeo/psalm": "^6"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
-                ],
-                "testdox": [
-                    "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests"
-                ],
-                "psalm": [
-                    "./vendor/bin/psalm --show-info=true --no-cache"
-                ]
-            },
-            "time": "2024-12-06T18:36:47+00:00"
-        },
-        {
             "name": "psr/container",
             "version": "dev-master",
             "source": {
@@ -5194,7 +5208,6 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {

@@ -7,8 +7,8 @@
 declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
-use ConvertDate;
-use ValidateDate;
+use plibv4\convert\ConvertDate;
+use plibv4\validate\ValidateDate;
 
 class InputTextTest extends TestCase {
 	function testGetInput() {

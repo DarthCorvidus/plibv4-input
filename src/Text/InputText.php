@@ -25,6 +25,10 @@ class InputText {
 	private ?Validate $validate = null;
 	private ?Convert $convertInput = null;
 	private ?Convert $convertDefault = null;
+	/**
+	 * Showed up after I added tests to Psalm? Why? Suppress for now.
+	 * @psalm-suppress UnusedProperty
+	 */
 	private mixed $inputStream;
 	/**
 	 * 

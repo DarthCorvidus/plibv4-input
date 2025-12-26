@@ -10,8 +10,8 @@ use PHPUnit\Framework\TestCase;
 use plibv4\convert\ConvertDate;
 use plibv4\validate\ValidateDate;
 
-class InputTextTest extends TestCase {
-	function testGetInput() {
+final class InputTextTest extends TestCase {
+	function testGetInput(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name?\n> ");
 		$stdio->addInput("Claus");
@@ -20,7 +20,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("Claus", $input->getInput());
 	}
 
-	function testGetDefaultedEmpty() {
+	function testGetDefaultedEmpty(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name? (Claus)\n> ");
 		$stdio->addInput("\n");
@@ -30,7 +30,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("Claus", $input->getInput());
 	}
 
-	function testGetDefaultedEntry() {
+	function testGetDefaultedEntry(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name? (Claus)\n> ");
 		$stdio->addInput("Lisa\n");
@@ -40,7 +40,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("Lisa", $input->getInput());
 	}
 	
-	function testGetMandatory() {
+	function testGetMandatory(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name?\n> ");
 		$stdio->addInput("\n");
@@ -55,7 +55,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("Claus", $input->getInput());
 	}
 	
-	function testValidate() {
+	function testValidate(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Date of birth?\n> ");
 		$stdio->addInput("08/01/2000\n");
@@ -69,7 +69,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("01.08.2000", $input->getInput());
 	}
 	
-	function testInputConvert() {
+	function testInputConvert(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Date of birth?\n> ");
 		$stdio->addInput("01.08.2000\n");
@@ -80,7 +80,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("2000-08-01", $input->getInput());
 	}
 
-	function testInputConvertEmpty() {
+	function testInputConvertEmpty(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Date of birth?\n> ");
 		$stdio->addInput("\n");
@@ -91,7 +91,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("", $input->getInput());
 	}
 
-	function testInputConvertDefault() {
+	function testInputConvertDefault(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Date of birth? (01.08.2020)\n> ");
 		$stdio->addInput("\n");
@@ -104,7 +104,7 @@ class InputTextTest extends TestCase {
 		$this->assertEquals("2020-08-01", $input->getInput());
 	}
 
-	function testInputConvertDefaultAndResult() {
+	function testInputConvertDefaultAndResult(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Date of birth? (01.08.2020)\n> ");
 		$stdio->addInput("\n");

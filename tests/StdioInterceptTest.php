@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
-class StdioInterceptTest extends TestCase {
-	function testStdioInterceptValidOutput() {
+final class StdioInterceptTest extends TestCase {
+	function testStdioInterceptValidOutput(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Please enter your name:");
 		$stdio->expectOutput("> ");
@@ -19,7 +19,7 @@ class StdioInterceptTest extends TestCase {
 		$this->assertEquals("", "");
 	}
 
-	function testStdioInterceptNonExistingOutput() {
+	function testStdioInterceptNonExistingOutput(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Please enter your name:");
 		$stdio->put("Please enter your name:");
@@ -28,7 +28,7 @@ class StdioInterceptTest extends TestCase {
 	}
 
 	
-	function testStdioInterceptInvalidOutput() {
+	function testStdioInterceptInvalidOutput(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Please enter your name:");
 		$stdio->expectOutput("> ");
@@ -37,7 +37,7 @@ class StdioInterceptTest extends TestCase {
 		$stdio->put(">");
 	}
 	
-	function testStdioInterceptInput() {
+	function testStdioInterceptInput(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Please enter your name:");
 		$stdio->expectOutput("> ");

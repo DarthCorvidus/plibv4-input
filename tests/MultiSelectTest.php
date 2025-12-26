@@ -7,7 +7,7 @@
 declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
-class MultiSelectTest extends TestCase {
+final class MultiSelectTest extends TestCase {
 	function getGeneric(): MultiSelectGeneric {
 		$values = array();
 		$values["8"] = "Android";
@@ -25,14 +25,14 @@ class MultiSelectTest extends TestCase {
 	return $generic;
 	}
 
-	function testGetSelectableAsSource() {
+	function testGetSelectableAsSource(): void {
 		$model = $this->getGeneric();
 
 		$select = new MultiSelect($model);
 		$this->assertEquals($select->getSelectable(), array(8, 2, 7, 6, 5, 3, 4, 1));
 	}
 	
-	function testGetSelectableAsZero() {
+	function testGetSelectableAsZero(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::ZERO);
 
@@ -40,7 +40,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($select->getSelectable(), array(0, 1, 2, 3, 4, 5, 6, 7));
 	}
 
-	function testGetSelectableAsNatural() {
+	function testGetSelectableAsNatural(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::NATURAL);
 
@@ -48,14 +48,14 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($select->getSelectable(), array(1, 2, 3, 4, 5, 6, 7, 8));
 	}
 
-	function testGetMapAsSource() {
+	function testGetMapAsSource(): void {
 		$model = $this->getGeneric();
 
 		$select = new MultiSelect($model);
 		$this->assertEquals($select->getMap(), array(8=>8, 2=>2, 7=>7, 6=>6, 5=>5, 3=>3, 4=>4, 1=>1));
 	}
 	
-	function testGetMapAsZero() {
+	function testGetMapAsZero(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::ZERO);
 
@@ -63,7 +63,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($select->getMap(), array(0=>8, 1=>2, 2=>7, 3=>6, 4=>5, 5=>3, 6=>4, 7=>1));
 	}
 	
-	function testGetMapAsNatural() {
+	function testGetMapAsNatural(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::NATURAL);
 
@@ -72,12 +72,13 @@ class MultiSelectTest extends TestCase {
 	}
 
 	
-	function testGetLinesAsSource() {
+	function testGetLinesAsSource(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::SOURCE);
 
 		$select = new MultiSelect($model);
-
+		
+		$lines = [];
 		$lines[] = "8 Android";
 		$lines[] = "2 Debian Linux";
 		$lines[] = "7 iOS";
@@ -89,11 +90,13 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($lines, $select->getLines());
 	}
 	
-	function testGetLinesAsZero() {
+	function testGetLinesAsZero(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::ZERO);
 		
 		$select = new MultiSelect($model);
+		
+		$lines = [];
 		$lines[] = "0 Android";
 		$lines[] = "1 Debian Linux";
 		$lines[] = "2 iOS";
@@ -105,11 +108,13 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($lines, $select->getLines());
 	}
 	
-	function testGetLinesAsNatural() {
+	function testGetLinesAsNatural(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::NATURAL);
 		
 		$select = new MultiSelect($model);
+		
+		$lines = [];
 		$lines[] = "1 Android";
 		$lines[] = "2 Debian Linux";
 		$lines[] = "3 iOS";
@@ -121,7 +126,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($lines, $select->getLines());
 	}
 	
-	function testGetLinesDefaulted() {
+	function testGetLinesDefaulted(): void {
 		$model = $this->getGeneric();
 		$model->setDefault(array(8, 3));
 
@@ -129,10 +134,9 @@ class MultiSelectTest extends TestCase {
 		
 		$reflection = new \ReflectionClass($select);
 		$property = $reflection->getProperty('selected');
-		$property->setAccessible(true);
 		$property->setValue($select, $model->getDefault());
 
-		
+		$lines = [];
 		$lines[] = "[8] Android";
 		$lines[] = " 2  Debian Linux";
 		$lines[] = " 7  iOS";
@@ -144,7 +148,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals($lines, $select->getLines());
 	}
 
-	function testGetSelectedAsSource() {
+	function testGetSelectedAsSource(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Available operating systems?\n");
 		$stdio->expectOutput("8 Android\n");
@@ -189,7 +193,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals(array(2, 1), $select->getSelected());
 	}
 	
-	function testGetSelectedAsZero() {
+	function testGetSelectedAsZero(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Available operating systems?\n");
 		$stdio->expectOutput("0 Android\n");
@@ -234,7 +238,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals(array(2, 1), $select->getSelected());
 	}
 	
-	function testGetSelectedAsNatural() {
+	function testGetSelectedAsNatural(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Available operating systems?\n");
 		$stdio->expectOutput("1 Android\n");
@@ -279,7 +283,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals(array(2, 1), $select->getSelected());
 	}
 
-	function testGetSelectedMandatoryEmpty() {
+	function testGetSelectedMandatoryEmpty(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Available operating systems?\n");
 		$stdio->expectOutput("1 Android\n");
@@ -335,7 +339,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals(array(2, 1), $select->getSelected());
 	}
 
-	function testGetSelectedDefaulted() {
+	function testGetSelectedDefaulted(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Available operating systems?\n");
 		$stdio->expectOutput(" 1  Android\n");
@@ -359,7 +363,7 @@ class MultiSelectTest extends TestCase {
 		$this->assertEquals(array(1, 2), $select->getSelected());
 	}
 	
-	function testGetSelectedDefaultedOverride() {
+	function testGetSelectedDefaultedOverride(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Available operating systems?\n");
 		$stdio->expectOutput(" 1  Android\n");

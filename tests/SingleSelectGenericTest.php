@@ -8,24 +8,24 @@ declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
-class SingleSelectGenericTest extends TestCase {
-	function testConstruct() {
+final class SingleSelectGenericTest extends TestCase {
+	function testConstruct(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$this->assertInstanceOf(SingleSelectGeneric::class, $generic);
 	}
 	
-	function testGetQuestion() {
+	function testGetQuestion(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$this->assertEquals("Your favorite pet?", $generic->getQuestion());
 	}
 	
-	function testSetQuestion() {
+	function testSetQuestion(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$generic->setQuestion("Your favorite breed?");
 		$this->assertEquals("Your favorite breed?", $generic->getQuestion());
 	}
 	
-	function testAddValue() {
+	function testAddValue(): void {
 		$values = array();
 		$values["2"] = "Cat";
 		$values["1"] = "Dog";
@@ -39,7 +39,7 @@ class SingleSelectGenericTest extends TestCase {
 		$this->assertEquals($values, $generic->getValues());
 	}
 	
-	function testSetValues() {
+	function testSetValues(): void {
 		$values = array();
 		$values["2"] = "Cat";
 		$values["1"] = "Dog";
@@ -51,25 +51,25 @@ class SingleSelectGenericTest extends TestCase {
 		$this->assertEquals($values, $generic->getValues());
 	}
 	
-	function testGetEmptyDefault() {
+	function testGetEmptyDefault(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$this->assertEquals("", $generic->getDefault());
 	}
 
-	function testSetDefault() {
+	function testSetDefault(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$generic->setDefault("2");
 		$this->assertEquals("2", $generic->getDefault());
 	}
 	
-	function testMandatory() {
+	function testMandatory(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$this->assertEquals(TRUE, $generic->isMandatory());
 		$generic->setMandatory(FALSE);
 		$this->assertEquals(FALSE, $generic->isMandatory());
 	}
 	
-	function testSetStyle() {
+	function testSetStyle(): void {
 		$generic = new SingleSelectGeneric("Your favorite pet?");
 		$this->assertEquals(IndexStyle::SOURCE, $generic->getIndexStyle());
 		

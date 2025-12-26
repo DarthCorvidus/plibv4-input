@@ -8,8 +8,13 @@ declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
-class MultiSelectGenericTest extends TestCase {
-	function getExampleValues() {
+final class MultiSelectGenericTest extends TestCase {
+	/**
+	 * @return string[]
+	 *
+	 * @psalm-return array{8: 'Android', 2: 'Debian Linux', 7: 'iOS', 6: 'macOS', 5: 'OS X', 3: 'Redhat Linux', 4: 'Ubuntu Linux', 1: 'Windows'}
+	 */
+	function getExampleValues(): array {
 		$values = array();
 		$values["8"] = "Android";
 		$values["2"] = "Debian Linux";
@@ -22,23 +27,23 @@ class MultiSelectGenericTest extends TestCase {
 	return $values;
 	}
 	
-	function testConstruct() {
+	function testConstruct(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$this->assertInstanceOf(MultiSelectGeneric::class, $generic);
 	}
 	
-	function testGetQuestion() {
+	function testGetQuestion(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$this->assertEquals("Available operating systems?", $generic->getQuestion());
 	}
 	
-	function testSetQuestion() {
+	function testSetQuestion(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$generic->setQuestion("Available applications?");
 		$this->assertEquals("Available applications?", $generic->getQuestion());
 	}
 	
-	function testAddValue() {
+	function testAddValue(): void {
 		$values = $this->getExampleValues();
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		foreach($values as $key => $value) {
@@ -48,7 +53,7 @@ class MultiSelectGenericTest extends TestCase {
 		$this->assertEquals($values, $generic->getValues());
 	}
 	
-	function testSetValues() {
+	function testSetValues(): void {
 		$values = $this->getExampleValues();
 
 		$generic = new MultiSelectGeneric("Available operating systems?");
@@ -57,25 +62,25 @@ class MultiSelectGenericTest extends TestCase {
 		$this->assertEquals($values, $generic->getValues());
 	}
 	
-	function testGetEmptyDefault() {
+	function testGetEmptyDefault(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$this->assertEquals(array(), $generic->getDefault());
 	}
 
-	function testSetDefault() {
+	function testSetDefault(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$generic->setDefault(array("2", "5", "1"));
 		$this->assertEquals(array("2", "5", "1"), $generic->getDefault());
 	}
 	
-	function testMandatory() {
+	function testMandatory(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$this->assertEquals(TRUE, $generic->isMandatory());
 		$generic->setMandatory(FALSE);
 		$this->assertEquals(FALSE, $generic->isMandatory());
 	}
 	
-	function testSetStyle() {
+	function testSetStyle(): void {
 		$generic = new MultiSelectGeneric("Available operating systems?");
 		$this->assertEquals(IndexStyle::SOURCE, $generic->getIndexStyle());
 		

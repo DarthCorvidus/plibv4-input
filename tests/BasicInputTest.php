@@ -7,8 +7,8 @@
 declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
-class BasicInputTest extends TestCase {
-	function testGetInput() {
+final class BasicInputTest extends TestCase {
+	function testGetInput(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name?\n");
 		$stdio->expectOutput("> ");
@@ -19,7 +19,7 @@ class BasicInputTest extends TestCase {
 		$this->assertEquals("Claus", BasicInput::getInput("Your name?"));
 	}
 	
-	function testGetInputMandatory() {
+	function testGetInputMandatory(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name?\n");
 		$stdio->expectOutput("> ");
@@ -32,7 +32,7 @@ class BasicInputTest extends TestCase {
 		$this->assertEquals("Claus", BasicInput::getInputMandatory("Your name?"));
 	}
 	
-	function testGetInputDefaultedEmpty() {
+	function testGetInputDefaultedEmpty(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name? (Heike)\n");
 		$stdio->expectOutput("> ");
@@ -43,7 +43,7 @@ class BasicInputTest extends TestCase {
 		$this->assertEquals("Heike", BasicInput::getInputDefaulted("Your name?", "Heike"));
 	}
 
-	function testGetInputDefaultedFilled() {
+	function testGetInputDefaultedFilled(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("Your name? (Heike)\n");
 		$stdio->expectOutput("> ");

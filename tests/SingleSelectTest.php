@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace plibv4\input;
 use PHPUnit\Framework\TestCase;
 
-class SingleSelectTest extends TestCase {
+final class SingleSelectTest extends TestCase {
 	function getGeneric(): SingleSelectGeneric {
 		$generic = new SingleSelectGeneric("What is your favorite pet?");
 		$generic->addValue("2", "Cat");
@@ -17,14 +17,14 @@ class SingleSelectTest extends TestCase {
 	return $generic;
 	}
 
-	function testGetSelectableAsSource() {
+	function testGetSelectableAsSource(): void {
 		$model = $this->getGeneric();
 
 		$select = new SingleSelect($model);
 		$this->assertEquals($select->getSelectable(), array(2, 1, 7));
 	}
 	
-	function testGetSelectableAsZero() {
+	function testGetSelectableAsZero(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::ZERO);
 
@@ -32,7 +32,7 @@ class SingleSelectTest extends TestCase {
 		$this->assertEquals($select->getSelectable(), array(0, 1, 2));
 	}
 
-	function testGetSelectableAsNatural() {
+	function testGetSelectableAsNatural(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::NATURAL);
 
@@ -40,14 +40,14 @@ class SingleSelectTest extends TestCase {
 		$this->assertEquals($select->getSelectable(), array(1, 2, 3));
 	}
 
-	function testGetMapAsSource() {
+	function testGetMapAsSource(): void {
 		$model = $this->getGeneric();
 
 		$select = new SingleSelect($model);
 		$this->assertEquals($select->getMap(), array(2=>2, 1=>1, 7=>7));
 	}
 	
-	function testGetMapAsZero() {
+	function testGetMapAsZero(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::ZERO);
 
@@ -55,7 +55,7 @@ class SingleSelectTest extends TestCase {
 		$this->assertEquals($select->getMap(), array(0=>2, 1=>1, 2=>7));
 	}
 	
-	function testGetMapAsNatural() {
+	function testGetMapAsNatural(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::NATURAL);
 
@@ -64,51 +64,55 @@ class SingleSelectTest extends TestCase {
 	}
 
 	
-	function testGetLinesAsSource() {
+	function testGetLinesAsSource(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::SOURCE);
 
 		$select = new SingleSelect($model);
+		$lines = [];
 		$lines[] = "2 Cat";
 		$lines[] = "1 Dog";
 		$lines[] = "7 Mouse";
 		$this->assertEquals($lines, $select->getLines());
 	}
 	
-	function testGetLinesAsZero() {
+	function testGetLinesAsZero(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::ZERO);
 		
 		$select = new SingleSelect($model);
+		$lines = [];
 		$lines[] = "0 Cat";
 		$lines[] = "1 Dog";
 		$lines[] = "2 Mouse";
 		$this->assertEquals($lines, $select->getLines());
 	}
 	
-	function testGetLinesAsNatural() {
+	function testGetLinesAsNatural(): void {
 		$model = $this->getGeneric();
 		$model->setIndexStyle(IndexStyle::NATURAL);
 		
 		$select = new SingleSelect($model);
+		$lines = [];
 		$lines[] = "1 Cat";
 		$lines[] = "2 Dog";
 		$lines[] = "3 Mouse";
 		$this->assertEquals($lines, $select->getLines());
 	}
 	
-	function testGetLinesDefaulted() {
+	function testGetLinesDefaulted(): void {
 		$model = $this->getGeneric();
 		$model->setDefault("1");
 		
 		$select = new SingleSelect($model);
+		$lines = [];
 		$lines[] = " 2  Cat";
 		$lines[] = "[1] Dog";
 		$lines[] = " 7  Mouse";
 		$this->assertEquals($lines, $select->getLines());
 	}
 
-	function testGetSelectedAsSource() {
+	function testGetSelectedAsSource(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("What is your favorite pet?\n");
 		$stdio->expectOutput("2 Cat\n");
@@ -127,7 +131,7 @@ class SingleSelectTest extends TestCase {
 		$this->assertEquals("2", $select->getSelected());
 	}
 	
-	function testGetSelectedAsZero() {
+	function testGetSelectedAsZero(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("What is your favorite pet?\n");
 		$stdio->expectOutput("0 Cat\n");
@@ -146,7 +150,7 @@ class SingleSelectTest extends TestCase {
 		$this->assertEquals("2", $select->getSelected());
 	}
 
-	function testGetSelectedAsNatural() {
+	function testGetSelectedAsNatural(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("What is your favorite pet?\n");
 		$stdio->expectOutput("1 Cat\n");
@@ -165,7 +169,7 @@ class SingleSelectTest extends TestCase {
 		$this->assertEquals("2", $select->getSelected());
 	}
 	
-	function testGetSelectedMandatoryEmpty() {
+	function testGetSelectedMandatoryEmpty(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("What is your favorite pet?\n");
 		$stdio->expectOutput("1 Cat\n");
@@ -190,7 +194,7 @@ class SingleSelectTest extends TestCase {
 		
 	}
 	
-	function testGetSelectedDefaultedEmpty() {
+	function testGetSelectedDefaultedEmpty(): void {
 		$stdio = new StdioIntercept();
 		$stdio->expectOutput("What is your favorite pet?\n");
 		$stdio->expectOutput(" 1  Cat\n");
